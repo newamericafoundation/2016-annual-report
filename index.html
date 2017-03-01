@@ -5,6 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="img/ico" href="images/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
 	<script type="text/javascript" src="script.js"></script>
 </head>
@@ -13,8 +16,13 @@
 <div id="wrapper">
 
 <!-- Information Div -->
-<div class="info-box">
-    <h1 class="info-city"></h1>
+<div id="info-box-container">
+  <div id="info-box">
+    <div id="info-header">
+      <span id="exit"><i class="fa fa-times" aria-hidden="true"></i></span>
+      <h1 id="info-city"></h1>
+      </div>
+  </div>
 </div>
 
 <div id="top-content">
@@ -236,7 +244,7 @@
     </g>
   </g>
   <g id="flags">
-    <g id="flagca">
+    <g id="flagsanfrancisco" class="flag">
       <polygon class="cls-12" points="706.5 664.97 757.7 664.87 749.2 676.26 759.4 687.97 706.5 687.97 706.5 664.97"/>
       <g>
         <path class="cls-13" d="M705.3,734.8a1.32,1.32,0,0,1-1.3-1.3V689h0V663.3a1.09,1.09,0,0,1,.4-0.9,1.49,1.49,0,0,1,.9-0.4h55a1.23,1.23,0,0,1,1.1.7,1.41,1.41,0,0,1-.1,1.4L752,676.7l9.3,11.4a1.4,1.4,0,0,1,.2,1.4,1.27,1.27,0,0,1-1.1.8H706.7v43.2a1.58,1.58,0,0,1-1.4,1.3h0Zm1.2-70.2v23.1h51l-8.2-10.1a1.21,1.21,0,0,1,0-1.6l8.4-11.4H706.5Z" transform="translate(0 0.36)"/>
@@ -248,7 +256,7 @@
         </g>
       </g>
     </g>
-    <g id="flagnyc">
+    <g id="flagnewyorkcity" class="flag">
       <polygon class="cls-12" points="2115.4 565.47 2166.6 565.47 2158.2 576.87 2168.3 588.47 2115.4 588.57 2115.4 565.47"/>
       <g>
         <path class="cls-13" d="M2114.2,635.3a1.32,1.32,0,0,1-1.3-1.3V589.5h0V563.8a1.09,1.09,0,0,1,.4-0.9,1.49,1.49,0,0,1,.9-0.4h55a1.23,1.23,0,0,1,1.1.7,1.41,1.41,0,0,1-.1,1.4l-9.3,12.6,9.3,11.4a1.4,1.4,0,0,1,.2,1.4,1.27,1.27,0,0,1-1.1.8h-53.7V634a1.58,1.58,0,0,1-1.4,1.3h0Zm1.2-70.2v23.1h51l-8.2-10.1a1.22,1.22,0,0,1,0-1.6l8.4-11.4h-51.2Z" transform="translate(0 0.36)"/>
@@ -260,7 +268,7 @@
         </g>
       </g>
     </g>
-    <g id="flagchicago">
+    <g id="flagchicago" class="flag">
       <polygon class="cls-12" points="1714.8 587.26 1663.7 587.26 1672.1 598.57 1661.9 610.26 1714.8 610.37 1714.8 587.26"/>
       <path class="cls-13" d="M1716.1,657.1a1.32,1.32,0,0,1-1.3-1.3V612.6h-53.7a1.17,1.17,0,0,1-1.1-.8,1.4,1.4,0,0,1,.2-1.4l9.3-11.4-9.3-12.6a1.39,1.39,0,0,1-.1-1.4,1.36,1.36,0,0,1,1.1-.7h55a1.09,1.09,0,0,1,.9.4,1.49,1.49,0,0,1,.4.9v25.7h0v44.5a1.58,1.58,0,0,1-1.4,1.3h0Zm-52.4-70.2,8.4,11.4a1.35,1.35,0,0,1,0,1.6l-8.2,10.1h51V586.9h-51.2Z" transform="translate(0 0.36)"/>
       <g>
@@ -270,7 +278,7 @@
         <ellipse class="cls-15" cx="1684.6" cy="593.36" rx="1.3" ry="1.4"/>
       </g>
     </g>
-    <g id="flagdc">
+    <g id="flagwashingtondc" class="flag">
       <polygon class="cls-12" points="2040.3 654.57 1989.1 654.57 1997.5 665.97 1987.3 677.57 2040.2 677.66 2040.3 654.57"/>
       <path class="cls-13" d="M2041.5,724.4a1.32,1.32,0,0,1-1.3-1.3V679.9h-53.7a1.17,1.17,0,0,1-1.1-.8,1.4,1.4,0,0,1,.2-1.4l9.3-11.4-9.3-12.6a1.39,1.39,0,0,1-.1-1.4,1.36,1.36,0,0,1,1.1-.7h55a1.09,1.09,0,0,1,.9.4,1.49,1.49,0,0,1,.4.9v25.7h0v44.5a1.58,1.58,0,0,1-1.4,1.3h0Zm-52.4-70.2,8.4,11.4a1.35,1.35,0,0,1,0,1.6l-8.2,10.1h51V654.2h-51.2Z" transform="translate(0 0.36)"/>
       <g>
@@ -282,197 +290,197 @@
     </g>
   </g>
   <g id="cities">
-    <g id="berkscounty">
+    <g id="berkscounty" class="city">
       <text class="cls-16" transform="translate(1938.25 648.6)">Berks County</text>
       <circle id="outer" class="cls-17" cx="2057.1" cy="666.06" r="8"/>
       <circle id="inner" class="cls-18" cx="2057.1" cy="666.06" r="8"/>
     </g>
-    <g id="stlouis">
+    <g id="stlouis" class="city">
       <text class="cls-16" transform="translate(1542.74 809.65)">St. Louis</text>
       <circle id="outer-2" data-name="outer" class="cls-17" cx="1642.5" cy="802.16" r="8"/>
       <circle id="inner-2" data-name="inner" class="cls-18" cx="1642.5" cy="802.16" r="8"/>
     </g>
-    <g id="magoffincounty">
+    <g id="magoffincounty" class="city">
       <text class="cls-16" transform="translate(1683.73 819.65)">Magoffin County</text>
       <circle id="outer-3" data-name="outer" class="cls-17" cx="1864.5" cy="812.96" r="8"/>
       <circle id="inner-3" data-name="inner" class="cls-18" cx="1864.5" cy="812.96" r="8"/>
     </g>
-    <g id="chicago">
+    <g id="chicago" class="city">
       <text class="cls-16" transform="translate(1618.25 673.15)">Chicago</text>
       <circle id="outer-4" data-name="outer" class="cls-17" cx="1716" cy="666.26" r="8"/>
       <circle id="inner-4" data-name="inner" class="cls-18" cx="1716" cy="666.26" r="8"/>
     </g>
-    <g id="cumberland">
+    <g id="cumberland" class="city">
       <text class="cls-16" transform="translate(2043.79 514.59)">Cumberland</text>
       <circle id="outer-5" data-name="outer" class="cls-17" cx="2179.2" cy="505.86" r="8"/>
       <circle id="inner-5" data-name="inner" class="cls-18" cx="2179.2" cy="505.86" r="8"/>
     </g>
-    <g id="tulsa">
+    <g id="tulsa" class="city">
       <text class="cls-16" transform="translate(1500.24 919.11)">Tulsa</text>
       <circle id="outer-6" data-name="outer" class="cls-17" cx="1486.7" cy="911.86" r="8"/>
       <circle id="inner-6" data-name="inner" class="cls-18" cx="1486.7" cy="911.86" r="8"/>
     </g>
-    <g id="sedgwick">
+    <g id="sedgwick" class="city">
       <text class="cls-16" transform="translate(1347.75 829.62)">Sedgwick</text>
       <circle id="outer-7" data-name="outer" class="cls-17" cx="1458.9" cy="821.66" r="8"/>
       <circle id="inner-7" data-name="inner" class="cls-18" cx="1458.9" cy="821.66" r="8"/>
     </g>
-    <g id="dover">
+    <g id="dover" class="city">
       <text class="cls-20" transform="translate(2102.4 725.16)">Dover</text>
       <circle id="outer-8" data-name="outer" class="cls-17" cx="2087.9" cy="717.46" r="8"/>
       <circle id="inner-8" data-name="inner" class="cls-18" cx="2087.9" cy="717.46" r="8"/>
     </g>
-    <g id="tarrantcounty">
+    <g id="tarrantcounty" class="city">
       <text class="cls-16" transform="translate(1280.26 1042.6)">Tarrant County</text>
       <circle id="outer-9" data-name="outer" class="cls-17" cx="1442.1" cy="1035.26" r="8"/>
       <circle id="inner-9" data-name="inner" class="cls-18" cx="1442.1" cy="1035.26" r="8"/>
     </g>
-    <g id="caddo">
+    <g id="caddo" class="city">
       <text class="cls-16" transform="translate(1492.75 972.6)">Caddo</text>
       <circle id="outer-10" data-name="outer" class="cls-17" cx="1478.9" cy="964.96" r="8"/>
       <circle id="inner-10" data-name="inner" class="cls-18" cx="1478.9" cy="964.96" r="8"/>
     </g>
-    <g id="seattle">
+    <g id="seattle" class="city">
       <text class="cls-16" transform="translate(831.57 399.63)">Seattle</text>
-      <circle id="outer-11" data-name="outer" class="cls-22" cx="815.7" cy="390.96" r="8"/>
+      <circle id="outer-11" data-name="outer" class="cls-17" cx="815.7" cy="390.96" r="8"/>
       <circle id="inner-11" data-name="inner" class="cls-18" cx="815.7" cy="390.96" r="8"/>
     </g>
-    <g id="minneapolis">
+    <g id="minneapolis" class="city">
       <text class="cls-16" transform="translate(1564.75 567.64)">Minneapolis</text>
       <circle id="outer-12" data-name="outer" class="cls-17" cx="1550.8" cy="559.86" r="8"/>
       <circle id="inner-12" data-name="inner" class="cls-18" cx="1550.8" cy="559.86" r="8"/>
     </g>
-    <g id="sanantonio">
+<!--     <g id="sanantonio" class="city">
       <text class="cls-16" transform="translate(1270.78 1151.28)">San Antonio</text>
       <circle id="outer-13" data-name="outer" class="cls-17" cx="1405.8" cy="1143.26" r="8"/>
       <circle id="inner-13" data-name="inner" class="cls-23" cx="1405.8" cy="1143.26" r="8"/>
-    </g>
-    <g id="sacramento">
+    </g> -->
+    <g id="sacramento" class="city">
       <text class="cls-16" transform="translate(777.61 736.63)">Sacramento</tspan></text>
       <circle id="outer-14" data-name="outer" class="cls-17" cx="762.8" cy="729.16" r="8"/>
       <circle id="inner-14" data-name="inner" class="cls-18" cx="762.8" cy="729.16" r="8"/>
     </g>
-    <g id="oakland">
+    <g id="oakland" class="city">
       <text class="cls-16" transform="translate(734.65 752.13)">Oakland</text>
       <circle id="outer-15" data-name="outer" class="cls-17" cx="722.4" cy="743.16" r="8"/>
       <circle id="inner-15" data-name="inner" class="cls-18" cx="722.4" cy="743.16" r="8"/>
     </g>
-    <g id="sanjose">
+    <g id="sanjose" class="city">
       <text class="cls-20" transform="translate(615.71 774.64)">San Jose</text>
       <circle id="outer-16" data-name="outer" class="cls-17" cx="727.4" cy="763.66" r="8"/>
       <circle id="inner-16" data-name="inner" class="cls-18" cx="727.4" cy="763.66" r="8"/>
     </g>
-    <g id="austin">
+    <g id="austin" class="city">
       <text class="cls-16" transform="translate(1434.26 1109.59)">Austin</text>
       <circle id="outer-17" data-name="outer" class="cls-17" cx="1418.8" cy="1102.46" r="8"/>
       <circle id="inner-17" data-name="inner" class="cls-18" cx="1418.8" cy="1102.46" r="8"/>
     </g>
-    <g id="sanfrancisco">
+    <g id="sanfrancisco" class="city">
       <text class="cls-20" transform="translate(552.66 750.13)">San Francisco</text>
       <circle id="outer-18" data-name="outer" class="cls-17" cx="705.4" cy="743.46" r="8"/>
       <circle id="inner-18" data-name="inner" class="cls-18" cx="705.4" cy="743.46" r="8"/>
     </g>
-    <g id="nashville">
+    <g id="nashville" class="city">
       <text class="cls-16" transform="translate(1788.72 901.15)">Nashville</text>
       <circle id="outer-19" data-name="outer" class="cls-17" cx="1773.7" cy="893.26" r="8"/>
       <circle id="inner-19" data-name="inner" class="cls-18" cx="1773.7" cy="893.26" r="8"/>
     </g>
-    <g id="orlando">
+    <g id="orlando" class="city">
       <text class="cls-16" transform="translate(1942.69 1175.62)">Orlando</text>
       <circle id="outer-20" data-name="outer" class="cls-17" cx="1985.2" cy="1146.26" r="8"/>
       <circle id="inner-20" data-name="inner" class="cls-18" cx="1985.2" cy="1146.26" r="8"/>
     </g>
-    <g id="indianapolis">
+    <g id="indianapolis" class="city">
       <text class="cls-16" transform="translate(1782.24 748.15)">Indianapolis</text>
       <circle id="outer-21" data-name="outer" class="cls-17" cx="1768.7" cy="741.66" r="8"/>
       <circle id="inner-21" data-name="inner" class="cls-18" cx="1768.7" cy="741.66" r="8"/>
     </g>
-    <g id="charleston">
+    <g id="charleston" class="city">
       <text class="cls-16" transform="translate(1800.72 782.15)">Charleston</text>
       <circle id="outer-22" data-name="outer" class="cls-17" cx="1919.2" cy="775.36" r="8"/>
       <circle id="inner-22" data-name="inner" class="cls-18" cx="1919.2" cy="775.36" r="8"/>
     </g>
-    <g id="arlington">
+    <g id="arlington" class="city">
       <text class="cls-16" transform="translate(1939.98 717.37)">Arlington</text>
       <circle id="outer-23" data-name="outer" class="cls-17" cx="2028.1" cy="730.86" r="8"/>
       <circle id="inner-23" data-name="inner" class="cls-18" cx="2028.1" cy="730.86" r="8"/>
     </g>
-    <g id="washingtondc">
+    <g id="washingtondc" class="city">
       <text class="cls-16" transform="translate(2053.43 745.16)">Washington DC</text>
       <circle id="outer-24" data-name="outer" class="cls-17" cx="2041.7" cy="730.56" r="8"/>
       <circle id="inner-24" data-name="inner" class="cls-18" cx="2041.7" cy="730.56" r="8"/>
     </g>
-    <g id="bertiecounty">
+    <g id="bertiecounty" class="city">
       <text class="cls-20" transform="translate(2106.44 837.17)">Bertie County</text>
       <circle id="outer-25" data-name="outer" class="cls-17" cx="2066.9" cy="831.06" r="8"/>
       <circle id="inner-25" data-name="inner" class="cls-18" cx="2066.9" cy="831.06" r="8"/>
     </g>
-    <g id="newyorkcity">
+    <g id="newyorkcity" class="city">
       <text class="cls-20" transform="translate(2123.84 667.16)">New York City</text>
       <circle id="outer-26" data-name="outer" class="cls-17" cx="2114.8" cy="641.16" r="8"/>
       <circle id="inner-26" data-name="inner" class="cls-18" cx="2114.8" cy="641.16" r="8"/>
     </g>
-    <g id="essexcounty">
+    <g id="essexcounty" class="city">
       <text class="cls-20" transform="translate(2182.81 535.67)">Essex County</text>
       <circle id="outer-27" data-name="outer" class="cls-17" cx="2182.7" cy="550.66" r="8"/>
       <circle id="inner-27" data-name="inner" class="cls-18" cx="2182.7" cy="550.66" r="8"/>
     </g>
-    <g id="boston">
+    <g id="boston" class="city">
       <text class="cls-20" transform="translate(2194.77 571.17)">Boston</text>
       <circle id="outer-28" data-name="outer" class="cls-17" cx="2177.7" cy="562.56" r="8"/>
       <circle id="inner-28" data-name="inner" class="cls-18" cx="2177.7" cy="562.56" r="8"/>
     </g>
-    <g id="atlanta">
+    <g id="atlanta" class="city">
       <text class="cls-16" transform="translate(1776.21 971.14)">Atlanta</text>
       <circle id="outer-29" data-name="outer" class="cls-17" cx="1864.5" cy="963.96" r="8"/>
       <circle id="inner-29" data-name="inner" class="cls-18" cx="1864.5" cy="963.96" r="8"/>
     </g>
-    <g id="honolulu">
+    <g id="honolulu" class="city">
       <text class="cls-20" transform="translate(237.25 775.64)">Honolulu</text>
       <circle id="outer-30" data-name="outer" class="cls-17" cx="259.6" cy="790.06" r="8"/>
       <circle id="inner-30" data-name="inner" class="cls-18" cx="259.6" cy="790.06" r="8"/>
     </g>
-    <g id="fresno">
+    <g id="fresno" class="city">
       <text class="cls-16" transform="translate(748.69 822.63)">Fresno</tspan></text>
       <circle id="outer-31" data-name="outer" class="cls-17" cx="783.8" cy="793.46" r="8"/>
       <circle id="inner-31" data-name="inner" class="cls-18" cx="783.8" cy="793.46" r="8"/>
     </g>
-    <g id="springfield">
+    <g id="springfield" class="city">
       <text class="cls-16" transform="translate(1550.75 753.65)">Springfield</text>
       <circle id="outer-32" data-name="outer" class="cls-17" cx="1672.9" cy="746.56" r="8"/>
       <circle id="inner-32" data-name="inner" class="cls-18" cx="1672.9" cy="746.56" r="8"/>
     </g>
-    <g id="oklahomacity">
+    <g id="oklahomacity" class="city">
       <text class="cls-16" transform="translate(1267.76 937.1)">Oklahoma City</text>
       <circle id="outer-33" data-name="outer" class="cls-17" cx="1430.2" cy="929.26" r="8"/>
       <circle id="inner-33" data-name="inner" class="cls-18" cx="1430.2" cy="929.26" r="8"/>
     </g>
-    <g id="albuquerque">
+    <g id="albuquerque" class="city">
       <text class="cls-16" transform="translate(1020.74 945.11)">Albuquerque</text>
       <circle id="outer-34" data-name="outer" class="cls-17" cx="1164.6" cy="938.46" r="8"/>
       <circle id="inner-34" data-name="inner" class="cls-18" cx="1164.6" cy="938.46" r="8"/>
     </g>
-    <g id="denver">
+    <g id="denver" class="city">
       <text class="cls-16" transform="translate(1255.74 768.62)">Denver</text>
       <circle id="outer-35" data-name="outer" class="cls-17" cx="1241.3" cy="760.66" r="8"/>
       <circle id="inner-35" data-name="inner" class="cls-18" cx="1241.3" cy="760.66" r="8"/>
     </g>
-    <g id="walshcounty">
+    <g id="walshcounty" class="city">
       <text class="cls-16" transform="translate(1291.25 463.63)">Walsh County</text>
       <circle id="outer-36" data-name="outer" class="cls-17" cx="1446.5" cy="456.16" r="8"/>
       <circle id="inner-36" data-name="inner" class="cls-18" cx="1446.5" cy="456.16" r="8"/>
     </g>
-    <g id="tempe">
+    <g id="tempe" class="city">
       <text class="cls-16" transform="translate(1012.71 977.12)">Tempe</text>
       <circle id="outer-37" data-name="outer" class="cls-17" cx="998.4" cy="969.56" r="8"/>
       <circle id="inner-37" data-name="inner" class="cls-18" cx="998.4" cy="969.56" r="8"/>
     </g>
-    <g id="baltimore">
+    <g id="baltimore" class="city">
       <text class="cls-16" transform="translate(1996.89 700.67)">Baltimore</text>
       <circle id="outer-38" data-name="outer" class="cls-17" cx="2057" cy="715.96" r="8"/>
       <circle id="inner-38" data-name="inner" class="cls-18" cx="2057" cy="715.96" r="8"/>
     </g>
-    <g id="losangeles">
+    <g id="losangeles" class="city">
       <text class="cls-20" transform="translate(644.29 911.12)">Los Angeles</text>
       <circle id="outer-39" data-name="outer" class="cls-17" cx="781.4" cy="900.36" r="8"/>
       <circle id="inner-39" data-name="inner" class="cls-18" cx="781.4" cy="900.36" r="8"/>
