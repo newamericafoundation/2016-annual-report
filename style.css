@@ -1,3 +1,5 @@
+/* Body */
+
 @font-face {
 	font-family: 'Circular Black';
 	src: url('fonts/circular-black.otf');
@@ -11,12 +13,14 @@
 }
 
 body, html {
-	height: 100%;
-	width: 100%;
 	margin: 0px;
 	overflow: none;
 	font-family: 'Circular Book';
 }
+
+
+/* Styling for Top and Bottom Content Divs */
+
 
 #na-map, #top-content, #bottom-content {
 	position: absolute;
@@ -24,47 +28,6 @@ body, html {
 	-webkit-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
-}
-
-.info-box {
-	display: none;
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: 15px;
-	height: 235px;
-	width: 185px;
-	z-index: 15;
-	border-radius: 10px;
-	background: white;
-	color: black;
-	overflow: scroll;
-}
-
-.selected {
-	display: block;
-}
-
-.info-city {
-	font-size: .5em;
-}
-
-.info-title {
-	font-family: 'Circular Black';
-	font-size: 1em;
-	color: black;
-	font-weight: bold;
-}
-
-.info-text {
-	font-family: 'Circular Book';
-	font-size: .75em;
-	color: #808080;
-}
-
-.info-link a:visited, .info-link a:hover, .info-link a:active, .info-link a:link {
-	color: #808080;
-	font-weight: bold;
 }
 
 #top-content, #bottom-content {
@@ -77,7 +40,7 @@ body, html {
 	left: 1%;
 	max-width: 20%;
 	max-height: 20%;
-	background: transparent;
+	background: #53C4CA;
 	color: white;
 }
 
@@ -122,7 +85,7 @@ body, html {
 	height: 100%;
 }
 
-#donation-button a:visited, #donation-button a:hover, #donation-button a:active, #donation-button a:link {
+a:visited #donation-button, a:hover #donation-button, a:active #donation-button, a:link #donation-button {
 	color: white;
 	text-decoration: none;
 }
@@ -132,10 +95,129 @@ body, html {
 	text-decoration: none;
 }
 
-.lines {
-	overflow: unset;
-	transition-delay: 3000ms;
+
+/* Styling for Info-Box and inner-elements */
+
+#info-box-container {
+	display: none;
+	position: relative;
+	top: 0;
+	left: 0;
+	padding: 15px;
+	height: 235px;
+	width: 185px;
+	z-index: 15;
+	border-radius: 10px;
+	background: white;
+	overflow: hidden;
 }
+
+#info-box {
+	display: none;
+	position: relative;
+	padding: 7.5px;
+	height: 220px;
+	width: 170px;
+	z-index: 15;
+	border-radius: 10px;
+	background: white;
+	color: black;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.info-content {
+	position: relative;
+	line-height: 17px;
+	margin-top: 1em;
+}
+
+#info-header {
+	height: 5%;
+
+}
+
+#info-city {
+	font-size: .5em;
+}
+
+.info-title {
+	font-family: 'Circular Black';
+	font-size: 1em;
+	color: black;
+	font-weight: bold;
+}
+
+.info-city, #exit {
+	display: inline-block;
+	vertical-align: bottom;
+}
+
+#exit {
+	color: #53C4CA;
+	float: right;
+	margin-top: -0.47em;
+}
+
+.arrow {
+	color: #808080;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.info-text, .info-link {
+	line-height: 1px;
+	font-size: .75em;
+	color: #808080;
+	font-weight: normal;
+	display: inline;
+}
+
+.info-link a:visited, .info-link a:hover, .info-link a:active, .info-link a:link {
+	color: #53C4CA;
+	text-decoration: none;
+	display: inline;
+}
+
+/* Styling for Selected elements */
+
+.selected {
+	display: block !important;
+}
+
+/* Styling for Path lines */
+
+.lineClass  {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: dash 15s linear forwards;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Styling for Scrollbars */
+
+#info-box::-webkit-scrollbar-track
+{
+	background-color: transparent;
+}
+
+#info-box::-webkit-scrollbar
+{
+	width: 3px;
+	padding-right: 3px;
+}
+
+#info-box::-webkit-scrollbar-thumb
+{
+	height: 10%;
+	background-color: #53C4CA;
+}
+
 
 /* For tablets and mobile devices */
 
