@@ -302,11 +302,6 @@ function web_functions() {
 function mobile_functions() {
 
       // edit footer for stickiness
-      // var footer_position = $("#mobile-footer").height();
-      
-      // $("#footer-wrapper").css({
-      //     'padding-bottom' : footer_height
-      // });
 
     d3.json("https://na-data-projects.s3-us-west-2.amazonaws.com/data/project_index/annualreportmapdata.json", function(data) {
    
