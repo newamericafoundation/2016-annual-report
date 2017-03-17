@@ -1,3 +1,18 @@
+  function check_window_size() {
+    var width = $(window).width();
+    var screenType = null;
+
+    if (width <= 840) {
+      screenType = "mobile";
+    }
+    else {
+      screenType = "web";
+    };
+
+    return screenType;
+  };
+
+
   function all_related_locations(data) {
     var relatedLocations = [];
     
@@ -55,7 +70,7 @@
       return div_coordinates;
   };
 
-  function related_lines(data, coordinates) {
+  function related_lines(data, coordinates, location) {
 
     var lineFunction = d3.line()
                       .x(function(d) { return d.x; })
@@ -63,25 +78,58 @@
                       .curve(d3.curveNatural);
     
     var lineGraph = d3.select("#" + data.id)
-      .append("path")
+      .insert("path", ":" + location)
       .attr("overflow", "unset")
       .attr("d", lineFunction(coordinates));
 
     return lineGraph;
   }
 
-  function remove_all_classes_and_lines(data) {
+  function add_classes_and_stroke(data) {
+          d3.select("#" + data.id).attr("class", "city " + data.id).select(".cls-16").attr("class", "cls-16 " + data.id);
+          d3.select("#" + data.id).select(".cls-18").attr("class", "cls-18 main " + data.id);
+          d3.select("#" + data.id + "> .cls-17").attr("class", "cls-17 main").style("stroke", "white");
+          if (d3.select("#flag" + data.id) !== null ) {
+            d3.select("#flag" + data.id).attr("class", "flag " + data.id)
+          };
 
-      d3.selectAll("#info-box-container, #info-box").attr("class", null);
+          var allRelatedLocations = all_related_locations(data);
 
+          for (var i in allRelatedLocations) {
+            d3.select("#" + allRelatedLocations[i]).attr("class", "city " + data.id).select(".cls-18").attr("class", "cls-18 " + data.id);
+            d3.select("#" + allRelatedLocations[i] + "> .cls-17").style("stroke", "white");
+              if (d3.select("#flag" + allRelatedLocations[i]) !== null) {
+                d3.select("#flag" + allRelatedLocations[i]).attr("class", "flag " + data.id);
+              };
+          };
 
-      // Removes city name class and opacity for previously selected cities
-      if (d3.selectAll(".cls-18").attr("class") !== "cls-18 " + data.id) {
-        d3.selectAll(".cls-18:not(." + data.id + ")").attr("class", "cls-18").attr("opacity", 1);
-        d3.selectAll(".city:not(." + data.id + ")").attr("class", "city").attr("opacity", 1);
-        d3.selectAll(".flag:not(." + data.id + ")").attr("class", "flag").attr("opacity", 1);
-        d3.selectAll("#map, #waves, #clouds").attr("opacity", 1);
-      };
+   };
+
+   function remove_classes_and_stroke(data) {
+          d3.select("#" + data.id).attr("class", "city").select(".cls-16").attr("class", "cls-16");
+          d3.select("#" + data.id).select(".cls-18").attr("class", "cls-18");
+          d3.select("#" + data.id + "> .cls-17").style("stroke", "#808285");
+          if (d3.select("#flag" + data.id) !== null ) {
+            d3.select("#flag" + data.id).attr("class", "flag")
+          };
+
+          var allRelatedLocations = all_related_locations(data);
+
+          for (var i in allRelatedLocations) {
+            d3.select("#" + allRelatedLocations[i]).attr("class", "city").select(".cls-18").attr("class", "cls-18");
+            d3.select("#" + allRelatedLocations[i] + "> .cls-17").style("stroke", "#808285");
+              if (d3.select("#flag" + allRelatedLocations[i]) !== null) {
+                d3.select("#flag" + allRelatedLocations[i]).attr("class", "flag");
+              };
+          };
+   };
+
+  function remove_all_previous_city_classes(data) {
+      // Removes city name class and opacity from previously selected cities
+        d3.selectAll(".cls-18:not(." + data.id + ")").attr("class", "cls-18");
+        d3.selectAll(".city:not(." + data.id + ")").attr("class", "city");
+        d3.selectAll(".city:not(." + data.id + ") > .cls-17").style("stroke", "#808285");
+        d3.selectAll(".flag:not(." + data.id + ")").attr("class", "flag");
 
       // Remove the lines drawn for previously selected cities
       d3.select("#cities").selectAll("g:not(#" + data.id + ")").selectAll("path").remove();    

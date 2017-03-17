@@ -1,28 +1,32 @@
 /* Body */
 
 @font-face {
-	font-family: 'Circular Black';
-	src: url('fonts/circular-black.otf');
-	format('opentype');
+	font-family: 'Circular-Black';
+	src: url('fonts/circularfamilyweb/css/fonts/lineto-circular-black.woff');
 }
 
 @font-face {
-	font-family: 'Circular Book';
-	src: url('fonts/circular-book.otf');
-	format('opentype');
+	font-family: 'Circular-Book';
+	src: url('fonts/circularfamilyweb/css/fonts/lineto-circular-book.woff');
 }
 
 body, html {
 	margin: 0px;
 	overflow: none;
-	font-family: 'Circular Book';
+	font-family: 'Circular-Book';
+	background: #53C4CA;
 }
 
+/* Styling for SVG elements */
+
+.cls-20, .cls-16 {
+	font-family: 'Circular-Book' !important;
+}
 
 /* Styling for Top and Bottom Content Divs */
 
 
-#na-map, #top-content, #bottom-content {
+#na-map, #bottom-content {
 	position: absolute;
 	top: 50%;
 	-webkit-transform: translateY(-50%);
@@ -36,7 +40,8 @@ body, html {
 }
 
 #top-content {
-	margin-top:-18.5%;
+	position: absolute;
+	top: 1%;
 	left: 1%;
 	max-width: 20%;
 	max-height: 20%;
@@ -45,20 +50,21 @@ body, html {
 }
 
 #web_image {
-	width: 35%;
+	width: 50%;
 }
 
-#mobile_image {
+#mobile_image, .mobile-info-header, #footer-wrapper, #mobile-footer {
 	display: none;
 }
 
 #top-content h2 {
 	margin-top: 5px; 
+	font-family: 'Circular-Black';
 	font-size: 1.75em;
 }
 
 #top-content p {
-	margin-top: -15px;
+	margin-top: -3%;
 	font-size: .75em;
 }
 
@@ -69,21 +75,23 @@ body, html {
 }
 
 #report-button {
+	font-family: 'Circular-Black';
 	background: white;
-	border: 1px solid white;
 	margin-bottom: 5%;
-	width: 160%;
-	min-height: 35px;
-	height: 100%;
 }
 
 #donation-button {
+	font-family: 'Circular-Black';
 	background-color: #53C4CA;
-	border: 1px solid white;
-	width: 180%;
-	min-height: 35px;
-	height: 100%;
 }
+
+#report-button, #donation-button {
+	border: 1px solid white;
+	min-height: 35px;
+	white-space: nowrap;
+	font-size: .7em;
+}
+
 
 a:visited #donation-button, a:hover #donation-button, a:active #donation-button, a:link #donation-button {
 	color: white;
@@ -99,21 +107,21 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 /* Styling for Info-Box and inner-elements */
 
 #info-box-container {
-	display: none;
+	opacity: 0;
 	position: relative;
 	top: 0;
 	left: 0;
 	padding: 15px;
 	height: 20%;
 	width: 14%;
-	z-index: 15;
+	z-index: 10;
 	border-radius: 10px;
 	background: white;
 	overflow: hidden;
 }
 
 #info-box {
-	display: none;
+	opacity: 0;
 	position: relative;
 	padding: 7.5px;
 	height: 235px;
@@ -132,10 +140,6 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 	margin-top: 1em;
 }
 
-#info-header {
-	height: 5%;
-
-}
 
 #info-city {
 	font-size: .5em;
@@ -182,24 +186,44 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 /* Styling for Selected elements */
 
 .selected {
-	display: block !important;
+	opacity: 1 !important;
 }
 
 /* Styling for Path lines */
 
+/*.cls-18 {
+	z-index: 20;
+}*/
+
 .lineClass  {
-	stroke: #808080;
+	z-index: 1;
+	stroke: #FFFFFF;
 	stroke-width: 2;
-	fill: #808080;
+	fill: #FFFFFF;
 	stroke-dasharray: 2000;
 	stroke-dashoffset: 2000;
-	animation: dash 10s linear forwards;
+	animation: dash 2s linear forwards;
 }
 
-.lineClass2 {
+.hovered {
+	stroke-dasharray: 2000;
+	stroke-dashoffset: 2000;
+	animation: dash 2s linear forwards;
+}
+
+.hovered {
+	-webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -ms-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+
+.lineClass.lineClass2 {
 	stroke: #53C4CA;
+	fill: #53C4CA;
 	stroke-width: 4;
-  	animation: dash 15s linear forwards;
+  	animation: dash 7s linear forwards;
 }
 
 @keyframes dash {
@@ -227,6 +251,34 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 }
 
 
+/* Styling for opacity transitions on click */
+
+#map, #waves, .flag, .city, .cls-18, #clouds, .lineClass, .lineClass2 {
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all  .5s ease-in-out;
+    -ms-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+
+.selected, #info-box, #info-box-container {
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -ms-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+}
+
+
+.city:hover {
+	cursor: pointer;
+}
+
+.cls-17:hover {
+	stroke: white;
+	fill: white;
+	} 
+
 /* For tablets and mobile devices */
 
 @media screen and (max-width: 840px) {
@@ -237,9 +289,10 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 		width: 100%;
 		margin: 0px;
 		overflow: none;
+		font-family: 'Circular-Book';
 	}
 
-	svg, #web_image {
+	svg, #web_image, #info-box, #info-box-container, #bottom-content {
 		display: none;
 	}
 
@@ -253,16 +306,13 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 	}
 
 	#top-content {
-		position: absolute;
-		top: 5px;
-		-webkit-transform: translateY(0%);
-		-ms-transform: translateY(0%);
-		transform: translateY(0%);
-		margin-top: 5px;
-		margin-left: 2px;
+		position: unset;
+		top: unset;
+		padding-left: 2%;
 		margin-right: 2px;
 		max-width: 100%;
 		display: inline-block;
+		padding-bottom: 2%;
 	}
 
 	#top-content h2 {
@@ -274,24 +324,100 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 		font-size: 1em;
 	}
 
-	#bottom-content {
+	.mobile-info-header {
+		display: block;
+		position: relative;
+		height: 15%;
+		width: 100%;
+		font-family: 'Circular-Book';
+		border-top: 1.5px solid rgba(255,255,255,0.5);
+		padding-top: 1%;
+		padding-bottom: 1%;
+		color: white;
+	}
+
+	.city_name, .icon {
+		text-shadow: 1px 2px 1.5px rgba(0,0,0,0.3);
+		font-size: 2em;
+	}
+
+	.city_name {
+		padding-left: 2%;
+	}
+
+	.icon {
+		position: absolute;
+		right: 2%;
+		-webkit-transition: transform .5s ease-in-out;
+	    -moz-transition: transform  .5s ease-in-out;
+	    -ms-transition: transform .5s ease-in-out;
+	    -o-transition: transform .5s ease-in-out;
+	    transition: transform .5s ease-in-out;
+	}
+
+	.isActive {
+			-webkit-transform: rotate(90deg);
+			-ms-transform: rotate(90deg);
+			-moz-transform: rotate(90deg);
+			-o-transform: rotate(90deg);
+			transform: rotate(90deg);
+			-webkit-transition: transform .5s ease-in-out;
+		    -moz-transition: transform  .5s ease-in-out;
+		    -ms-transition: transform .5s ease-in-out;
+		    -o-transition: transform .5s ease-in-out;
+		    transition: transform .5s ease-in-out;
+		}
+
+	.info-box-mobile {
+		padding-left: 1%;
+		padding-right: 1%;
+		background-color: #FFFFFF;
+		overflow: hidden;
+	}
+
+	.info-title, .info-text, .info-link {
+		font-family: 'Circular-Book';
+	}
+
+	.info-title {
+		font-size: 1.25em;
+		color: #53C4CA;
+	}
+
+	.info-text, .info-link {
+		font-size: 1em;
+		color: black;
+	}
+
+	.info-link a:visited, .info-link a:hover, .info-link a:active, .info-link a:link {
+		color: #53C4CA;
+		text-decoration: none;
+		display: inline;
+	}
+
+	#footer-wrapper {
+	    position: relative;
+	    width: 100%;
+	    height: 100%;
+	    padding-bottom: 2em;
+	}
+
+	#mobile-footer {
 		position: absolute;
 		top: unset;
 		left: 0;
 		bottom: 0;
-		-webkit-transform: translateY(0);
-		-ms-transform: translateY(0);
-		transform: translateY(0);
-		
 		width: 100%;
-		margin-top: 0;
+		height: 2em;
 		display: inline-block;
 	}
 
 	#report-button, #donation-button {
 		width: 50%;
 		min-height: unset;
-		height: 5em;
+		height: 3em;
+		font-size: 1em;
+		/*padding: 1%;*/
 	}
 
 	#report-button {
