@@ -317,13 +317,13 @@ function mobile_functions() {
           if (thisID.classed("mobile-info-header selected " + d.id) === true){
               thisID.select(".icon").attr("class", "icon");
               
-              var transitionTime = 750 * +(d.totalProjects);
+              var transitionTime = 500 * +(d.totalProjects);
               thisID.selectAll(".info-box-mobile")
                 .style("min-height", "150px")
                 .transition().duration(transitionTime) 
                 .style("min-height", "0px");
 
-              thisID.select(".info-box-mobile").transition().delay(transitionTime + 250).remove();
+              thisID.selectAll(".info-box-mobile").transition().delay(transitionTime + 250).remove();
               thisID.attr("class", "mobile-info-header").transition().delay(100).style("padding-bottom", "1%");
               return;
           } 
@@ -337,9 +337,7 @@ function mobile_functions() {
               thisID.insert("div")
                 .attr("class", "info-box-mobile")
                 .attr("id", "project_" + i)
-                .style("height", 0)
-                .transition().duration(750*i) 
-                .style("min-height", "150px");
+                .style("height", 0);
               thisID.select("#project_" + i)
                 .append("h3")
                 .classed("info-title", true)
@@ -357,6 +355,7 @@ function mobile_functions() {
                 }; // closes if statement
 
               thisID.style("padding-bottom", 0);
+              thisID.selectAll(".info-box-mobile").transition().duration(500*i).style("min-height", "150px");
             }; // closes for loop
           }; // closes inner else statments
         }); // closes on click function
