@@ -370,7 +370,7 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 
 	.info-box-mobile {
 		padding-left: 1%;
-		padding-right: 1%;
+		padding-right: .5%;
 		background-color: #FFFFFF;
 		overflow: hidden;
 	}
