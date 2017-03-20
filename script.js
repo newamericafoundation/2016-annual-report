@@ -317,11 +317,12 @@ function mobile_functions() {
           if (thisID.classed("mobile-info-header selected " + d.id) === true){
               thisID.select(".icon").attr("class", "icon");
               
-              var transitionTime = 500 * +(d.totalProjects);
-              thisID.selectAll(".info-box-mobile")
-                .style("min-height", "150px")
+              var actualHeight = $(".info-box-mobile").height();
+              var transitionTime = +(d.totalProjects) * 500;
+              thisID.select(".info-box-mobile")
+                .style("height", actualHeight + "px")
                 .transition().duration(transitionTime) 
-                .style("min-height", "0px");
+                .style("height", "0px");
 
               thisID.selectAll(".info-box-mobile").transition().delay(transitionTime + 250).remove();
               thisID.attr("class", "mobile-info-header").transition().delay(100).style("padding-bottom", "1%");
@@ -332,31 +333,30 @@ function mobile_functions() {
           
             thisID.selectAll(".icon").attr("class", "icon isActive " + divID);
             thisID.attr("class", "mobile-info-header selected " + d.id);
-
+            thisID.insert("div").attr("class", "info-box-mobile")
+            
             for (var i = 1; i <= +(d.totalProjects); i++) {
-              thisID.insert("div")
-                .attr("class", "info-box-mobile")
-                .attr("id", "project_" + i)
-                .style("height", 0);
-              thisID.select("#project_" + i)
+              d3.select(".info-box-mobile")
                 .append("h3")
                 .classed("info-title", true)
                 .text(d["project_" + i]);
-              thisID.select("#project_" + i)
+              d3.select(".info-box-mobile")
                 .append("p")
                 .classed("info-text", true)
                 .text(d["description_" + i]);
 
               if (d["projecturl_" + i] !== null) {
-                thisID.select("#project_" + i)
+                d3.select(".info-box-mobile")
                     .append("span")
                     .classed("info-link", true)
                     .html("<a href='" + d["projecturl_" + i] + "' target='_blank'> Read More</a>");
                 }; // closes if statement
+              }; // closes for loop
 
               thisID.style("padding-bottom", 0);
-              thisID.selectAll(".info-box-mobile").transition().duration(500*i).style("min-height", "150px");
-            }; // closes for loop
+              var actualHeight = $(".info-box-mobile").height();
+              thisID.select(".info-box-mobile").style("height", 0).transition().duration(+(d.totalProjects) * 500).style("height", actualHeight + 10 + "px");
+            
           }; // closes inner else statments
         }); // closes on click function
       }); // closes mobile functions
