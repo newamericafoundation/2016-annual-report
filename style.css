@@ -299,10 +299,11 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 
 	#mobile_image {
 		display: unset;
-		width: 30%;
+		width: 39%;
 		float: left;
 		margin-right: 6px;
 		margin-top: 5px;
+		display: inline-block;
 	}
 
 	#top-content {
@@ -399,17 +400,17 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 	    position: relative;
 	    width: 100%;
 	    height: 100%;
-	    padding-bottom: 2em;
+	    padding-bottom: 3em;
 	    display: block;
 	}
 
 	#mobile-footer {
-		position: absolute;
+		position: fixed;
 		top: unset;
 		left: 0;
 		bottom: 0;
 		width: 100%;
-		height: 2em;
+		height: 3em;
 		display: inline-block;
 	}
 

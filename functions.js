@@ -81,6 +81,7 @@
       .insert("path", ":" + location)
       .attr("overflow", "unset")
       .attr("d", lineFunction(coordinates));
+                           
 
     return lineGraph;
   }
