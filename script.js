@@ -63,6 +63,13 @@ function web_functions() {
             // then find each of the hovered city's related locations, and draw lines to them 
               if (infoBox.attr("class") !== "selected " + thisData.id) {
 
+                console.log(thisData.id);
+
+                d3.select("#click-here")
+                  .style("display", "unset")
+                  .style("top", (d3.select("#" + thisData.id).select(".cls-18").attr("cy")) + "px")
+                  .style("left", (d3.select("#" + thisData.id).select(".cls-18").attr("cx")) + "px");
+
                 var divCoordinates = find_coordinates(thisData.id);
                 var relatedLocations = all_related_locations(thisData);
                 var relatedCoordinates = [];
@@ -103,6 +110,8 @@ function web_functions() {
         .on("mouseleave", function(d){
           // if any city is clicked, don't do anything on mouseleave
           if (infoBox.classed("selected") == true) {
+                d3.select("#click-here")
+                  .style("opacity", 0);
             return;
           
           } else {
@@ -110,6 +119,8 @@ function web_functions() {
           // otherwise, if this city is not the selected city, remove all lines that have been created,
           // and change the styling of every element to its default state
           if (infoBox.attr("class") !== "selected " + d.id) { 
+            d3.select("#click-here")
+                .style("opacity", 0);
             // change cursor settings
             d3.selectAll(".city:hover")
               .style("cursor", "pointer");
@@ -134,9 +145,13 @@ function web_functions() {
         .on("click", function(d){
 
           if (infoBox.classed("selected") === true) {
+            d3.select("#click-here")
+                .style("opacity", 0);
             return;
           }
           else {
+            d3.select("#click-here")
+              .style("opacity", 0);
             currentData = d;
             var allRelatedLocations = all_related_locations(currentData);
 
@@ -306,18 +321,15 @@ function mobile_functions() {
               thisID.attr("class", "mobile-info-header");
               thisID.select(".icon").attr("class", "icon");
               
-              var actualHeight = $("#ib-" + d.id).height();
               var transitionTime = +(d.totalProjects) * 500;
-              thisInfoBox.style("height", actualHeight + "px")
-                .transition().duration(transitionTime) 
-                .style("height", "0px");
-
-              thisInfoBox.selectAll("h3, p, span").transition().delay(transitionTime + 250).remove();
+              thisInfoBox.transition().duration(transitionTime).style("height", "0px");
+              thisInfoBox.selectAll("h3, p, span").transition().delay(transitionTime).remove();
               return;
           } 
 
           else {
-          
+
+            thisInfoBox.selectAll("h3, p, span").remove();
             thisID.selectAll(".icon").attr("class", "icon isActive " + divID);
             thisID.attr("class", "mobile-info-header selected " + d.id);
             thisInfoBox.style("height", "unset");
