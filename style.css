@@ -2,12 +2,18 @@
 
 @font-face {
 	font-family: 'Circular-Black';
-	src: url('fonts/circularfamilyweb/css/fonts/lineto-circular-black.woff');
+	src: url('fonts/circularfamilyweb/css/fonts/lineto-circular-black.eot'),
+		url('fonts/circularfamilyweb/css/fonts/lineto-circular-black.eot?#iefix') format('embedded-opentype'),
+		url('fonts/circularfamilyweb/css/fonts/lineto-circular-black.woff2') format('woff2'),
+       	url('fonts/circularfamilyweb/css/fonts/lineto-circular-black.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'Circular-Book';
-	src: url('fonts/circularfamilyweb/css/fonts/lineto-circular-book.woff');
+	src: url('fonts/circularfamilyweb/css/fonts/lineto-circular-book.eot'),
+		url('fonts/circularfamilyweb/css/fonts/lineto-circular-book.eot?#iefix') format('embedded-opentype'),
+		url('fonts/circularfamilyweb/css/fonts/lineto-circular-book.woff2') format('woff2'),
+       	url('fonts/circularfamilyweb/css/fonts/lineto-circular-book.woff') format('woff');
 }
 
 body, html {
@@ -43,6 +49,8 @@ h1 {
 	position: absolute;
 	top: 50%;
 	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
 }
@@ -441,7 +449,6 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 		min-height: unset;
 		height: 3em;
 		font-size: 1em;
-		/*padding: 1%;*/
 	}
 
 	#report-button {
