@@ -219,11 +219,8 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 
 /* Styling for Path lines */
 
-/*.cls-18 {
-	z-index: 20;
-}*/
-
 .lineClass  {
+	position: absolute;
 	z-index: 1;
 	stroke: #FFFFFF;
 	stroke-width: 2;

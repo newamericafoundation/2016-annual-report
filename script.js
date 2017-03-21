@@ -90,6 +90,8 @@ function web_functions() {
                   .attr("opacity", 0.3);
                 d3.selectAll("." + thisData.id).selectAll(".cls-16").style("fill", "white");
 
+
+
             }; // closes if statement
           };
 
@@ -106,7 +108,7 @@ function web_functions() {
           } else {
 
           // otherwise, if this city is not the selected city, remove all lines that have been created,
-          // and change the styling of every time to its default state
+          // and change the styling of every element to its default state
           if (infoBox.attr("class") !== "selected " + d.id) { 
             // change cursor settings
             d3.selectAll(".city:hover")
@@ -173,29 +175,6 @@ function web_functions() {
                     };
 
                   }; // closes for loop
-
-                // creates lines in the case that a user clicks on another city while another city is selected
-                if (("#" + currentData.id + " > .linegraph") !== true) {
-
-                  var divCoordinates = find_coordinates(currentData.id);
-                  var relatedLocations = all_related_locations(currentData);
-                  var relatedCoordinates = [];
-
-                    for (var i=0; i < relatedLocations.length; i++) {
-                      var coordinates = find_coordinates(relatedLocations[i]);
-                      relatedCoordinates.push(coordinates);
-                    };
-
-
-                    for (var i=0; i < relatedCoordinates.length; i++) {
-                      var lineData = [];
-                      lineData.push(divCoordinates, relatedCoordinates[i]);
-
-                      var lineGraph =  related_lines(currentData, lineData, "first-child");
-
-                      lineGraph.attr("class", "lineClass " + currentData.id);
-                    }
-                  };
 
                 d3.selectAll(".info-content")
                   .on("mouseenter", function(){
@@ -273,10 +252,13 @@ function web_functions() {
       d3.select("body")
         .on("click", function(event){
 
+          console.log(d3.event.target.id);
+          console.log(d3.event.target.className["baseVal"]);
+
           if (screenType === "web") {
 
             if (d3.event.target.id == "info-box" || d3.event.target.className["baseVal"] == "cls-18 main " + currentData.id || d3.event.target.className["baseVal"] == "cls-17 main"
-                || d3.event.target.className["baseVal"] == "cls-16 " + currentData.id) {
+                || d3.event.target.className["baseVal"] == "cls-16 " + currentData.id || d3.event.target.className["baseVal"]  == "cls-20 " + currentData.id) {
               return;
             }
 

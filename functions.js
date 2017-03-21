@@ -71,10 +71,19 @@
   };
 
   function related_lines(data, coordinates, location) {
-
+    
+    var angleX = coordinates[0]["x"] - coordinates[1]["x"];
+    var angleY = coordinates[0]["y"] - coordinates[1]['y'];
+    var angle = Math.atan2(angleY, angleX);
     var lineFunction = d3.line()
-                      .x(function(d) { return d.x; })
-                      .y(function(d) { return d.y; })
+
+
+                      .x(function(d) { 
+                        var x_coord = +(+(d.x) + 8 * +(Math.cos(angle)));
+                        return x_coord; })
+                      .y(function(d) { 
+                        var y_coord = +(+(d.y) + 8 * +(Math.sin(angle)));
+                        return y_coord; })
                       .curve(d3.curveNatural);
     
     var lineGraph = d3.select("#" + data.id)
@@ -88,6 +97,7 @@
 
   function add_classes_and_stroke(data) {
           d3.select("#" + data.id).attr("class", "city " + data.id).select(".cls-16").attr("class", "cls-16 " + data.id);
+          d3.select("#" + data.id).select(".cls-20").attr("class", "cls-20 " + data.id);
           d3.select("#" + data.id).select(".cls-18").attr("class", "cls-18 main " + data.id);
           d3.select("#" + data.id + "> .cls-17").attr("class", "cls-17 main").style("stroke", "white");
           if (d3.select("#flag" + data.id) !== null ) {
@@ -108,6 +118,7 @@
 
    function remove_classes_and_stroke(data) {
           d3.select("#" + data.id).attr("class", "city").select(".cls-16").attr("class", "cls-16");
+          d3.select("#" + data.id).attr("class", "city").select(".cls-20").attr("class", "cls-20");
           d3.select("#" + data.id).select(".cls-18").attr("class", "cls-18");
           d3.select("#" + data.id + "> .cls-17").style("stroke", "#808285");
           if (d3.select("#flag" + data.id) !== null ) {
