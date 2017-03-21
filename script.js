@@ -87,7 +87,8 @@ function web_functions() {
             
                 // Adds opacity to all items except selected item and its related locations
                 d3.selectAll("#map, #waves, .flag:not(." + thisData.id +"), .city:not(." + thisData.id + "), .cls-18:not(." + thisData.id + "), #clouds")
-                  .attr("opacity", 0.5);
+                  .attr("opacity", 0.3);
+                d3.selectAll("." + thisData.id).selectAll(".cls-16").style("fill", "white");
 
             }; // closes if statement
           };
@@ -113,6 +114,7 @@ function web_functions() {
             d3.selectAll("#cities > g > .cls-17")
               .style("stroke", "#808285")
               .style("fill", "#808285");
+            d3.selectAll(".cls-16").style("fill", "#808285");
             // removes all lines that have been created
             d3.selectAll(".city").selectAll("path").remove();
             // changes the opacity of all other map elements
@@ -233,7 +235,7 @@ function web_functions() {
             
                 // Adds opacity to all map elements except selected item and its related locations
                 d3.selectAll("#map, #waves, .flag:not(." + currentData.id +"), .city:not(." + currentData.id + "), .cls-18:not(." + currentData.id + "), #clouds")
-                  .attr("opacity", 0.5);
+                  .attr("opacity", 0.3);
 
                 // Opens info-box in a location that is visible on the screen.
 
@@ -259,6 +261,7 @@ function web_functions() {
         d3.select("#exit")
           .on("click", function (){
               d3.selectAll("#map, #waves, .flag, .city, .cls-18, #clouds").attr("opacity", 1);
+              d3.selectAll(".cls-16").style("fill", "#808285");
               remove_classes_and_stroke(currentData);
               remove_all_previous_city_classes(currentData);
               d3.select("#" + currentData.id).selectAll("path").remove();
@@ -281,6 +284,7 @@ function web_functions() {
               return; 
 
             d3.selectAll("#map, #waves, .flag, .city, .cls-18, #clouds").attr("opacity", 1);
+            d3.selectAll(".cls-16").style("fill", "#808285");
             remove_classes_and_stroke(currentData);
             remove_all_previous_city_classes(currentData);
             d3.select("#" + currentData.id).selectAll("path").remove();
@@ -312,20 +316,21 @@ function mobile_functions() {
       d3.selectAll(".mobile-info-header")
         .data(data['projectList'], function(d) { return d ? d.id : this.id.replace("mobile-", ""); })
         .on("click", function(d){
+            var thisInfoBox = "#ib-" + d.id;
+            thisInfoBox = d3.select(thisInfoBox);
             var divID = "mobile-" + d.id;
             thisID = d3.select("#" + divID);
           if (thisID.classed("mobile-info-header selected " + d.id) === true){
+              thisID.attr("class", "mobile-info-header");
               thisID.select(".icon").attr("class", "icon");
               
-              var actualHeight = $(".info-box-mobile").height();
+              var actualHeight = $("#ib-" + d.id).height();
               var transitionTime = +(d.totalProjects) * 500;
-              thisID.select(".info-box-mobile")
-                .style("height", actualHeight + "px")
+              thisInfoBox.style("height", actualHeight + "px")
                 .transition().duration(transitionTime) 
                 .style("height", "0px");
 
-              thisID.selectAll(".info-box-mobile").transition().delay(transitionTime + 250).remove();
-              thisID.attr("class", "mobile-info-header").transition().delay(100).style("padding-bottom", "1%");
+              thisInfoBox.selectAll("h3, p, span").transition().delay(transitionTime + 250).remove();
               return;
           } 
 
@@ -333,29 +338,25 @@ function mobile_functions() {
           
             thisID.selectAll(".icon").attr("class", "icon isActive " + divID);
             thisID.attr("class", "mobile-info-header selected " + d.id);
-            thisID.insert("div").attr("class", "info-box-mobile")
+            thisInfoBox.style("height", "unset");
             
             for (var i = 1; i <= +(d.totalProjects); i++) {
-              d3.select(".info-box-mobile")
-                .append("h3")
+              thisInfoBox.append("h3")
                 .classed("info-title", true)
                 .text(d["project_" + i]);
-              d3.select(".info-box-mobile")
-                .append("p")
+              thisInfoBox.append("p")
                 .classed("info-text", true)
                 .text(d["description_" + i]);
 
               if (d["projecturl_" + i] !== null) {
-                d3.select(".info-box-mobile")
-                    .append("span")
+                thisInfoBox.append("span")
                     .classed("info-link", true)
                     .html("<a href='" + d["projecturl_" + i] + "' target='_blank'> Read More</a>");
                 }; // closes if statement
               }; // closes for loop
 
-              thisID.style("padding-bottom", 0);
-              var actualHeight = $(".info-box-mobile").height();
-              thisID.select(".info-box-mobile").style("height", 0).transition().duration(+(d.totalProjects) * 500).style("height", actualHeight + 10 + "px");
+              var actualHeight = $("#ib-" + d.id).height();
+              thisInfoBox.style("height", 0).transition().duration(+(d.totalProjects) * 500).style("height", actualHeight + 10 + "px");
             
           }; // closes inner else statments
         }); // closes on click function
