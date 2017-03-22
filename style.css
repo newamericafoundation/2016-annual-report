@@ -27,11 +27,11 @@ h1, h2 {
 }
 
 h2 {
-	font-size: 1em;
+	font-size: 3vh;
 }
 
 h1 {
-	font-size: 2.3em;
+	font-size: 5vh;
 	margin-top: -.4em;
 }
 
@@ -87,8 +87,8 @@ h1 {
 }
 
 #top-content p {
-	margin-top: -20px;
-	font-size: .9em;
+	font-size: 2vh;
+	margin-top: -1em;
 }
 
 #bottom-content {
@@ -112,8 +112,8 @@ h1 {
 	border: 1px solid white;
 	min-height: 35px;
 	white-space: nowrap;
-	font-size: 1rem;
 	padding: 12px;
+	font-size: 2vh;
 }
 
 #report-button:hover, #donation-button:hover {
@@ -182,18 +182,18 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 .info-text {
 	position: relative;
 	line-height: 90%;
-	font-size: .93rem;
+	font-size: 2vh;
 }
 
 
 #info-city {
-	font-size: .8em;
+	font-size: 2vh;
 	margin-bottom: -1em;
 }
 
 .info-title {
 	font-family: 'Circular-Black';
-	font-size: 1.53em;
+	font-size: 3vh;
 	color: black;
 	font-weight: bold;
 	margin-top: -0.4em;
