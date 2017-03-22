@@ -19,17 +19,17 @@ $(document).ready(function(){
 
     setTimeout(function(){
 
-    screenType = check_window_size();
-    
-    if (screenType == "web"){
-      web_functions();
-    }
+      screenType = check_window_size();
+      
+      if (screenType == "web"){
+        web_functions();
+      }
 
-    else {
-      mobile_functions();
-    };
+      else {
+        mobile_functions();
+      };
 
-  }, 500);
+    }, 500);
   
   });
 
@@ -64,12 +64,13 @@ function web_functions() {
 
           else {
 
+            d3.select("#click-here")
+              .style("top", d3.event.pageY + 10 + "px") 
+              .style("left", d3.event.pageX - 3 + "px")
+              .style("display", "block");
+
             // then find each of the hovered city's related locations, and draw lines to them 
               if (infoBox.attr("class") !== "selected " + thisData.id) {
-                d3.select("#click-here")
-                  .style("display", "unset")
-                  .style("top", (d3.select("#" + thisData.id).select(".cls-18").attr("cy")) + "px")
-                  .style("left", (d3.select("#" + thisData.id).select(".cls-18").attr("cx")) + "px");
 
                 var divCoordinates = find_coordinates(thisData.id);
                 var relatedLocations = all_related_locations(thisData);
@@ -111,8 +112,7 @@ function web_functions() {
         .on("mouseleave", function(d){
           // if any city is clicked, don't do anything on mouseleave
           if (infoBox.classed("selected") == true) {
-                d3.select("#click-here")
-                  .style("opacity", 0);
+            d3.select("#click-here").style("display", "none");
             return;
           
           } else {
@@ -120,8 +120,7 @@ function web_functions() {
           // otherwise, if this city is not the selected city, remove all lines that have been created,
           // and change the styling of every element to its default state
           if (infoBox.attr("class") !== "selected " + d.id) { 
-            d3.select("#click-here")
-                .style("opacity", 0);
+            d3.select("#click-here").style("display", "none");
             // change cursor settings
             d3.selectAll(".city:hover")
               .style("cursor", "pointer");
@@ -146,15 +145,13 @@ function web_functions() {
         .on("click", function(d){
 
           if (infoBox.classed("selected") === true) {
-            d3.select("#click-here")
-                .style("opacity", 0);
+            d3.select("#click-here").style("display", "none");
             return;
           }
           else {
-            d3.select("#click-here")
-              .style("opacity", 0);
             currentData = d;
             var allRelatedLocations = all_related_locations(currentData);
+            d3.select("#click-here").style("display", "none");
 
             // Remove classes from previously selected cities
             infoBoxandContainer.attr("class", null);
