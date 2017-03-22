@@ -88,6 +88,7 @@ h1 {
 
 #top-content p {
 	font-size: 2vh;
+	width: 95%;
 	margin-top: -1em;
 }
 
@@ -181,7 +182,6 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 
 .info-text {
 	position: relative;
-	line-height: 90%;
 	font-size: 2vh;
 }
 
