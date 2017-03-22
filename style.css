@@ -252,9 +252,8 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 }
 
 .hovered {
-	stroke-dasharray: 1000;
-	stroke-dashoffset: 1000;
-	animation: dash 2s linear forwards;
+	stroke-dashoffset: 0;
+	animation: dash 2s linear;
 }
 
 .hovered {
@@ -273,6 +272,9 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 }
 
 @keyframes dash {
+  from {
+    stroke-dashoffset: 2000;
+  }
   to {
     stroke-dashoffset: 0;
   }
