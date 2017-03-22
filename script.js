@@ -17,6 +17,8 @@ $(document).ready(function(){
   
   $(window).on("resize", function(){
 
+    setTimeout(function(){
+
     screenType = check_window_size();
     
     if (screenType == "web"){
@@ -26,6 +28,8 @@ $(document).ready(function(){
     else {
       mobile_functions();
     };
+
+  }, 500);
   
   });
 

@@ -75,7 +75,7 @@ h1 {
 	width: 50%;
 }
 
-.mobile-info-header, #footer-wrapper, #mobile-footer {
+.mobile-info-header, #info-box-mobile, #footer-wrapper, #mobile-footer {
 	display: none;
 }
 
