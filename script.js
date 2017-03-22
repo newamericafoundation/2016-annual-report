@@ -62,9 +62,6 @@ function web_functions() {
 
             // then find each of the hovered city's related locations, and draw lines to them 
               if (infoBox.attr("class") !== "selected " + thisData.id) {
-
-                console.log(thisData.id);
-
                 d3.select("#click-here")
                   .style("display", "unset")
                   .style("top", (d3.select("#" + thisData.id).select(".cls-18").attr("cy")) + "px")
@@ -266,9 +263,6 @@ function web_functions() {
 
       d3.select("body")
         .on("click", function(event){
-
-          console.log(d3.event.target.id);
-          console.log(d3.event.target.className["baseVal"]);
 
           if (screenType === "web") {
 
