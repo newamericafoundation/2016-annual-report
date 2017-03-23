@@ -129,7 +129,7 @@ function web_functions() {
               .style("fill", "#808285");
             d3.selectAll(".cls-16").style("fill", "#808285");
             // removes all lines that have been created
-            d3.selectAll(".city").selectAll("path").remove();
+            d3.selectAll(".city").selectAll(".lineClass").remove();
             // changes the opacity of all other map elements
             d3.selectAll("#map, #waves, .flag, .city, .cls-18, #clouds").attr("opacity", 1);
             remove_classes_and_stroke(d);
