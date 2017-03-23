@@ -208,7 +208,7 @@ function web_functions() {
                         for (var i=0; i < relatedCoordinates.length; i++) {
                           var lineData = [];
                           lineData.push(divCoordinates, relatedCoordinates[i]);
-                          var lineGraph =  related_lines(currentData, lineData, "nth-last-of-type(2)");
+                          var lineGraph =  related_lines(currentData, lineData, "last-child");
                           lineGraph.attr("class", "lineClass lineClass2 " + currentData.id);
                         }; // closes for statement
                       }; // closes inner if statement

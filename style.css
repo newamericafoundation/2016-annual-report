@@ -391,7 +391,7 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 	}
 
 	.city_name, .icon {
-		font-size: 2em;
+		font-size: 5vh;
 	}
 
 	.city_name {
@@ -436,12 +436,12 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 
 	.info-title {
 		padding-top: 25px;
-		font-size: 1.25em;
+		font-size: 3vh;
 		color: #53C4CA;
 	}
 
 	.info-text, .info-link {
-		font-size: 1em;
+		font-size: 2.5vh;
 		color: black;
 	}
 
