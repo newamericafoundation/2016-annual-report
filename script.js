@@ -288,8 +288,10 @@ function web_functions() {
           else {
             return;
           };
+
        }); // closes body selection
-  } // closes web functions 
+      }); // closes web functions
+}
 
 function mobile_functions() {
 
