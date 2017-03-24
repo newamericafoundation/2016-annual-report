@@ -27,11 +27,11 @@ h1, h2 {
 }
 
 h2 {
-	font-size: 3vh;
+	font-size: 1.15em;
 }
 
 h1 {
-	font-size: 5vh;
+	font-size: 1.9em;
 	margin-top: -.4em;
 }
 
@@ -87,7 +87,7 @@ h1 {
 }
 
 #top-content p {
-	font-size: 2vh;
+	font-size: .76em;
 	width: 95%;
 	margin-top: -1em;
 }
@@ -114,7 +114,7 @@ h1 {
 	min-height: 35px;
 	white-space: nowrap;
 	padding: 12px;
-	font-size: 2vh;
+	font-size: 1.15em;
 }
 
 #report-button:hover, #donation-button:hover {
@@ -182,18 +182,18 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 
 .info-text {
 	position: relative;
-	font-size: 2vh;
+	font-size: .76em;
 }
 
 
 #info-city {
-	font-size: 2vh;
+	font-size: 1em;
 	margin-bottom: -1em;
 }
 
 .info-title {
 	font-family: 'Circular-Black';
-	font-size: 3vh;
+	font-size: 1.15em;
 	color: black;
 	font-weight: bold;
 	margin-top: -0.4em;
@@ -219,7 +219,7 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 
 .info-text, .info-link {
 	line-height: 1px;
-	font-size: .75em;
+	font-size: .76em;
 	color: #808080;
 	font-weight: normal;
 	display: inline;
@@ -249,19 +249,6 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 	stroke-dasharray: 2000;
 	stroke-dashoffset: 2000;
 	animation: dash 2s linear forwards;
-}
-
-.hovered {
-	stroke-dashoffset: 2000;
-	animation: new-dash 2s linear forwards;
-}
-
-.hovered {
-	-webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -ms-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
 }
 
 .lineClass.lineClass2 {
@@ -365,16 +352,16 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 	}
 
 	#top-content h1 {
-		font-size: 5vh;
+		font-size: 1.9em;
 	}
 
 	#top-content h2 {
 		margin-top: 0;
-		font-size: 3vh;
+		font-size: 1.15em;
 	}
 
 	#top-content p {
-		font-size: 2.5vh;
+		font-size: .76em;
 		width: 100%;
 	}
 
@@ -391,7 +378,7 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 	}
 
 	.city_name, .icon {
-		font-size: 5vh;
+		font-size: 1.9em;
 	}
 
 	.city_name {
@@ -436,7 +423,7 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 
 	.info-title {
 		padding-top: 25px;
-		font-size: 3vh;
+		font-size: 1.15em;
 		color: #53C4CA;
 	}
 
@@ -473,7 +460,7 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 		width: 50%;
 		min-height: unset;
 		height: 3em;
-		font-size: 1em;
+		font-size: 1.25em;
 	}
 
 	#report-button {
