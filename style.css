@@ -114,7 +114,7 @@ h1 {
 	min-height: 35px;
 	white-space: nowrap;
 	padding: 12px;
-	font-size: 1.15em;
+	font-size: .85em;
 }
 
 #report-button:hover, #donation-button:hover {
