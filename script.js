@@ -343,7 +343,7 @@ function mobile_functions() {
               }; // closes for loop
 
               var actualHeight = $("#ib-" + d.id).height();
-              thisInfoBox.style("height", 0).transition().duration(+(d.totalProjects) * 500).style("height", actualHeight + 10 + "px");
+              thisInfoBox.style("height", 0).transition().duration(+(d.totalProjects) * 500).style("height", actualHeight + 25 + "px");
             
           }; // closes inner else statments
         }); // closes on click function
