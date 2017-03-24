@@ -27,12 +27,13 @@ h1, h2 {
 }
 
 h2 {
-	font-size: 1.15em;
+	font-size: 1.063em;
 }
 
 h1 {
-	font-size: 1.9em;
-	margin-top: -.4em;
+    font-size: 2em;
+    margin-top: -.1em;
+    margin-left: -.03em;
 }
 
 /* Styling for SVG elements */
@@ -71,7 +72,7 @@ h1 {
 }
 
 #logo_image {
-	width: 50%;
+	width: 100px;
 }
 
 .mobile-info-header, .info-box-mobile, #footer-wrapper, #mobile-footer {
@@ -87,9 +88,10 @@ h1 {
 }
 
 #top-content p {
-	font-size: .76em;
+	font-size: 0.938em;
+	line-height: 130%;
 	width: 95%;
-	margin-top: -1em;
+	margin-top: -10px;
 }
 
 #bottom-content {
@@ -155,7 +157,8 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 	left: 0;
 	padding: 15px;
 	max-height: 25%;
-	width: 14%;
+ 	width:18%; 
+ 	min-width:250px;
 	z-index: 10;
 	border-radius: 10px;
 	background: white;
@@ -185,17 +188,20 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 	font-size: .76em;
 }
 
-
 #info-city {
-	font-size: 1em;
-	margin-bottom: -1em;
+    font-size: 0.938em;
+    margin-bottom: 2px;
+    color: #000;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.15);
+    padding-bottom: 10px;
+    padding-top: 15px;
 }
 
 .info-title {
 	font-family: 'Circular-Black';
-	font-size: 1.15em;
+    font-size: 1.313em;
+    line-height: 110%;
 	color: black;
-	font-weight: bold;
 	margin-top: -0.4em;
 	margin-bottom: 0.4em;
 }
@@ -218,8 +224,8 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 }
 
 .info-text, .info-link {
-	line-height: 1px;
-	font-size: .76em;
+    font-size: 0.938em;
+    line-height: 130%;
 	color: #808080;
 	font-weight: normal;
 	display: inline;
@@ -336,8 +342,7 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 
 
 	#logo_image {
-		display: unset;
-		width: 25vh;
+		width: 100px;
 		margin-right: 6px;
 		margin-top: 5px;
 	}
@@ -356,8 +361,8 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 	}
 
 	#top-content h2 {
-		margin-top: 0;
-		font-size: 1.15em;
+		margin-top: 12px;
+		font-size: 1.063em;
 	}
 
 	#top-content p {
@@ -378,11 +383,11 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 	}
 
 	.city_name, .icon {
-		font-size: 1.9em;
+		font-size: 1.4em;
 	}
 
 	.city_name {
-		padding-left: 5%;
+		padding-left: 25px;
 		font-family: 'Circular-Black';
 	}
 
@@ -417,14 +422,19 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 		overflow: hidden;
 	}
 
-	.info-title, .info-text, .info-link {
+	.info-text, .info-link {
 		font-family: 'Circular-Book';
 	}
 
 	.info-title {
+		font-family: 'Circular-Black'; 
+		color: black; 
 		padding-top: 25px;
 		font-size: 1.15em;
-		color: #53C4CA;
+	}
+
+	.info-text {
+		/*padding: 25px;*/
 	}
 
 	.info-text, .info-link {
@@ -460,7 +470,7 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 		width: 50%;
 		min-height: unset;
 		height: 3em;
-		font-size: 1.25em;
+		font-size: 1.063em;
 	}
 
 	#report-button {
