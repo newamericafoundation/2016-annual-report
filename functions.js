@@ -1,8 +1,9 @@
   function check_window_size() {
     var width = $(window).width();
+    var height = $(window).height();
     var screenType = null;
 
-    if (width <= 840) {
+    if (width <= 1024 || height <= 600) {
       screenType = "mobile";
     }
     else {
