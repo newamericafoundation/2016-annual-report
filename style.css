@@ -388,6 +388,10 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 		font-size: 1.4em;
 	}
 
+	.city_name:hover, .icon:hover {
+		cursor: pointer;
+	}
+
 	.city_name {
 		padding-left: 25px;
 		font-family: 'Circular-Black';
