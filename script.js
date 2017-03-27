@@ -17,8 +17,6 @@ $(document).ready(function(){
   
   $(window).on("resize", function(){
 
-    setTimeout(function(){
-
       screenType = check_window_size();
       
       if (screenType == "web"){
@@ -29,8 +27,6 @@ $(document).ready(function(){
         mobile_functions();
       };
 
-    }, 500);
-  
   });
 
 
@@ -63,11 +59,17 @@ function web_functions() {
           } 
 
           else {
+            var translate = d3.select("#" + thisData.id).select(".cls-16").attr("transform");
+            translate = translate.replace("translate(", "");
+            translate = translate.replace(")", "");
+            translate = translate.split(" ");
+            // console.log(translate);
 
-            d3.select("#click-here")
-              .style("top", d3.event.pageY + 10 + "px") 
-              .style("left", d3.event.pageX - 3 + "px")
-              .style("display", "block");
+            d3.select("#" + thisData.id)
+              .append("text")
+              .attr("class", "click-here")
+              .text("Click Here")
+              .attr("transform", "translate(" + +(translate[0]) + " " + (+(translate[1]) + 20) + ")");
 
             // then find each of the hovered city's related locations, and draw lines to them 
               if (infoBox.attr("class") !== "selected " + thisData.id) {
@@ -97,7 +99,8 @@ function web_functions() {
                 // Adds opacity to all items except selected item and its related locations
                 d3.selectAll("#map, #waves, .flag:not(." + thisData.id +"), .city:not(." + thisData.id + "), .cls-18:not(." + thisData.id + "), #clouds")
                   .attr("opacity", 0.3);
-                d3.selectAll("." + thisData.id).selectAll(".cls-16").style("fill", "white");
+                d3.selectAll("." + thisData.id).selectAll(".cls-16, .cls-20").style("fill", "white")
+                  .style("text-shadow", "0px 0px 5px rgba(148, 148, 148, 1)");
 
 
 
@@ -112,7 +115,7 @@ function web_functions() {
         .on("mouseleave", function(d){
           // if any city is clicked, don't do anything on mouseleave
           if (infoBox.classed("selected") == true) {
-            d3.select("#click-here").style("display", "none");
+            d3.select(".click-here").remove();
             return;
           
           } else {
@@ -120,14 +123,15 @@ function web_functions() {
           // otherwise, if this city is not the selected city, remove all lines that have been created,
           // and change the styling of every element to its default state
           if (infoBox.attr("class") !== "selected " + d.id) { 
-            d3.select("#click-here").style("display", "none");
+            d3.select(".click-here").remove();
             // change cursor settings
             d3.selectAll(".city:hover")
               .style("cursor", "pointer");
             d3.selectAll("#cities > g > .cls-17")
               .style("stroke", "#808285")
               .style("fill", "#808285");
-            d3.selectAll(".cls-16").style("fill", "#808285");
+            d3.selectAll(".cls-16").style("fill", "#808285").style("text-shadow", "none");
+            d3.selectAll(".cls-20").style("text-shadow", "none");
             // removes all lines that have been created
             d3.selectAll(".city").selectAll(".lineClass").remove();
             // changes the opacity of all other map elements
@@ -145,13 +149,15 @@ function web_functions() {
         .on("click", function(d){
 
           if (infoBox.classed("selected") === true) {
-            d3.select("#click-here").style("display", "none");
+            d3.select(".click-here").remove();
+            d3.selectAll(".cls-16, .cls-20").style("text-shadow", "none");
             return;
           }
           else {
             currentData = d;
             var allRelatedLocations = all_related_locations(currentData);
-            d3.select("#click-here").style("display", "none");
+            d3.select(".click-here").remove();
+            d3.selectAll(".cls-16, .cls-20").style("text-shadow", "none");
 
             // Remove classes from previously selected cities
             infoBoxandContainer.attr("class", null);

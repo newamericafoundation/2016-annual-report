@@ -136,18 +136,15 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 
 /* Styling for Info-Box and inner-elements */
 
-#click-here {
-	display: none;
+.click-here {
 	position: absolute;
 	top: 0;
 	left: 0;
 	z-index: 10;
-}
-
-#click-here p {
 	font-family: 'Circular-Book';
-	font-size: .5em;
-	color: white;
+	font-size: 1em;
+	fill: white;
+	stroke: white;
 }
 
 #info-box-container {
