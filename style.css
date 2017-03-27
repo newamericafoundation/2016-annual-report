@@ -215,6 +215,10 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 	margin-top: -0.47em;
 }
 
+#exit:hover {
+	cursor: pointer;
+}
+
 .arrow {
 	color: #808080;
 	text-align: center;
