@@ -16,6 +16,7 @@ $(document).ready(function(){
 
 
 $(window).on("resizeend", 1000, function(){
+
       screenType = check_window_size();
       
       if (screenType == "web"){
@@ -23,6 +24,7 @@ $(window).on("resizeend", 1000, function(){
       }
 
       else {
+        $("#exit").click();
         mobile_functions();
       }; 
   });
