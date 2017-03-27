@@ -295,11 +295,11 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 /* Styling for opacity transitions on click */
 
 #map, #waves, .flag, .city, .cls-18, #clouds, .lineClass, .lineClass2 {
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all  .5s ease-in-out;
-    -ms-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity  .5s ease-in-out;
+    -ms-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
 }
 
 .selected, #info-box, #info-box-container {

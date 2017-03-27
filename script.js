@@ -14,9 +14,8 @@ $(document).ready(function(){
       mobile_functions();
     };
 
-  
-  $(window).on("resize", function(){
 
+$(window).on("resizeend", function(){
       screenType = check_window_size();
       
       if (screenType == "web"){
@@ -25,8 +24,7 @@ $(document).ready(function(){
 
       else {
         mobile_functions();
-      };
-
+      }; 
   });
 
 
