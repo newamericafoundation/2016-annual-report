@@ -63,11 +63,31 @@ function web_functions() {
             translate = translate.split(" ");
             // console.log(translate);
 
-            d3.select("#" + thisData.id)
+            if (thisData.id == "baltimore") {
+              d3.select("#" + thisData.id)
+              .append("text")
+              .attr("class", "click-here")
+              .text("Click Here")
+              .attr("transform", "translate(" + (+(translate[0]) + 110) + " " + +(translate[1]) + ")");
+
+            }
+
+            else if (thisData.id == "honolulu") {
+              d3.select("#" + thisData.id)
+              .append("text")
+              .attr("class", "click-here")
+              .text("Click Here")
+              .attr("transform", "translate(" + +(translate[0]) + " " + (+(translate[1]) + 45) + ")");
+
+            }
+
+            else {
+              d3.select("#" + thisData.id)
               .append("text")
               .attr("class", "click-here")
               .text("Click Here")
               .attr("transform", "translate(" + +(translate[0]) + " " + (+(translate[1]) + 25) + ")");
+            };
 
             // then find each of the hovered city's related locations, and draw lines to them 
               if (infoBox.attr("class") !== "selected " + thisData.id) {
