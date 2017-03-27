@@ -27,11 +27,11 @@ h1, h2 {
 }
 
 h2 {
-	font-size: 1.063em;
+	font-size: 106.3%;
 }
 
 h1 {
-    font-size: 2em;
+    font-size: 200%;
     margin-top: -.1em;
     margin-left: -.03em;
 }
@@ -75,7 +75,7 @@ h1 {
 	width: 100px;
 }
 
-.mobile-info-header, .info-box-mobile, #footer-wrapper, #mobile-footer {
+#logo-image, .mobile-info-header, .info-box-mobile, #footer-wrapper, #mobile-footer {
 	display: none;
 }
 
@@ -88,7 +88,7 @@ h1 {
 }
 
 #top-content p {
-	font-size: 0.938em;
+	font-size: 1.063vw;
 	line-height: 130%;
 	width: 95%;
 	margin-top: -10px;
@@ -186,7 +186,7 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 }
 
 #info-city {
-    font-size: 0.938em;
+    font-size: 93.8%;
     margin-bottom: 2px;
     color: #000;
     border-bottom: 2px solid rgba(128, 128, 128, 0.15);
@@ -221,7 +221,7 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 }
 
 .info-text, .info-link {
-    font-size: 0.938em;
+    font-size: 93.8%;
     line-height: 130%;
 	color: #808080;
 	font-weight: normal;
@@ -359,7 +359,7 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 
 	#top-content h2 {
 		margin-top: 12px;
-		font-size: 1.063em;
+		font-size: 106.3%;
 	}
 
 	#top-content p {
@@ -431,7 +431,7 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 	}
 
 	.info-text, .info-link {
-	    font-size: 0.938em;
+	    font-size: 93.8%;
 	    line-height: 130%;
 	    color: black;
 	}
@@ -464,7 +464,7 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 		width: 50%;
 		min-height: unset;
 		height: 3em;
-		font-size: 1.063em;
+		font-size: 106.3%;
 	}
 
 	#report-button {
