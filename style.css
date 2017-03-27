@@ -346,13 +346,12 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 
 	#logo_image {
 		width: 100px;
-		margin-right: 6px;
-		margin-top: 5px;
 	}
 
 	#top-content {
 		position: unset;
 		top: unset;
+		margin-top: 20px;
 		padding-left: 25px;
 		padding-right: 25px;
 		max-width: 100%;
