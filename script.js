@@ -98,7 +98,7 @@ function web_functions() {
                 d3.selectAll("#map, #waves, .flag:not(." + thisData.id +"), .city:not(." + thisData.id + "), .cls-18:not(." + thisData.id + "), #clouds")
                   .attr("opacity", 0.3);
                 d3.selectAll("." + thisData.id).selectAll(".cls-16, .cls-20").style("fill", "white")
-                  .style("text-shadow", "0px 0px 5px rgba(148, 148, 148, 1)");
+                  .style("text-shadow", "0px 0px 5px rgba(83, 196, 202, 1)");
 
 
 
