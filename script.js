@@ -59,7 +59,7 @@ function web_functions() {
           } 
 
           else {
-            var translate = d3.select("#" + thisData.id).select(".cls-16").attr("transform");
+            var translate = d3.select("#" + thisData.id).select(".cls-16, .cls-20").attr("transform");
             translate = translate.replace("translate(", "");
             translate = translate.replace(")", "");
             translate = translate.split(" ");
