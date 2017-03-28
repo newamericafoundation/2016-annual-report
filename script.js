@@ -20,9 +20,8 @@ $(window).on("resize", function(){
       screenType = check_window_size();
 
       setTimeout(function(){
-        console.log("yes, i did fire");
         check_window_size();
-      }, 3000);
+      }, 2000);
       
       if (screenType == "web"){
         web_functions();
