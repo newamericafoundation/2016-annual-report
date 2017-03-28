@@ -53,8 +53,8 @@ function web_functions() {
           if (infoBox.classed("selected") === true) {
             var selectedCity = infoBox.attr("class");
             selectedCity = selectedCity.replace("selected ", "");
-            d3.selectAll(".city:not(." + selectedCity + "):hover")
-              .style("cursor", "unset");
+            d3.selectAll(".city:not(.main):hover")
+              .style("cursor", "default");
             d3.selectAll("#cities > g:not(." + selectedCity + ") > .cls-17")
               .style("stroke", "#808285")
               .style("fill", "#808285");
@@ -85,6 +85,14 @@ function web_functions() {
               .text("Click Here")
               .attr("transform", "translate(" + +(translate[0]) + " " + (+(translate[1]) + 45) + ")");
 
+            }
+
+            else if (thisData.id == "indianapolis") {
+              d3.select("#" + thisData.id)
+              .append("text")
+              .attr("class", "click-here")
+              .text("Click Here")
+              .attr("transform", "translate(" + (+(translate[0]) + 130) + " " + +(translate[1]) + ")");              
             }
 
             else {
@@ -173,15 +181,17 @@ function web_functions() {
         .on("click", function(d){
 
           if (infoBox.classed("selected") === true) {
-            d3.select(".click-here").remove();
             d3.selectAll(".cls-16, .cls-20").style("text-shadow", "none");
             return;
           }
           else {
+            $("#info-box").scrollTop();
+
             currentData = d;
             var allRelatedLocations = all_related_locations(currentData);
             d3.select(".click-here").remove();
             d3.selectAll(".cls-16, .cls-20").style("text-shadow", "none");
+            d3.selectAll(".city:hover").style("cursor", "pointer");
 
             // Remove classes from previously selected cities
             infoBoxandContainer.attr("class", null);
@@ -218,6 +228,29 @@ function web_functions() {
                     };
 
                   }; // closes for loop
+
+                // creates lines in the case that a user clicks on another city while another city is selected
+                 if (("#" + currentData.id + " > .linegraph") !== true) {
+ 
+                   var divCoordinates = find_coordinates(currentData.id);
+                   var relatedLocations = all_related_locations(currentData);
+                   var relatedCoordinates = [];
+ 
+                     for (var i=0; i < relatedLocations.length; i++) {
+                       var coordinates = find_coordinates(relatedLocations[i]);
+                       relatedCoordinates.push(coordinates);
+                     };
+ 
+ 
+                     for (var i=0; i < relatedCoordinates.length; i++) {
+                       var lineData = [];
+                       lineData.push(divCoordinates, relatedCoordinates[i]);
+ 
+                       var lineGraph =  related_lines(currentData, lineData, "first-child");
+ 
+                       lineGraph.attr("class", "lineClass " + currentData.id);
+                     }
+                   };
 
                 d3.selectAll(".info-content")
                   .on("mouseenter", function(){

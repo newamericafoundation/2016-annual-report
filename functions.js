@@ -97,7 +97,7 @@
   }
 
   function add_classes_and_stroke(data) {
-          d3.select("#" + data.id).attr("class", "city " + data.id).select(".cls-16").attr("class", "cls-16 " + data.id);
+          d3.select("#" + data.id).attr("class", "city main " + data.id).select(".cls-16").attr("class", "cls-16 " + data.id);
           d3.select("#" + data.id).select(".cls-20").attr("class", "cls-20 " + data.id);
           d3.select("#" + data.id).select(".cls-18").attr("class", "cls-18 main " + data.id);
           d3.select("#" + data.id + "> .cls-17").attr("class", "cls-17 main").style("stroke", "white");
