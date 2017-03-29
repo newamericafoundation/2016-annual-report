@@ -73,7 +73,7 @@ function web_functions() {
               d3.select("#" + thisData.id)
               .append("text")
               .attr("class", "click-here")
-              .text("Click Here")
+              .text("Click City for More")
               .attr("transform", "translate(" + (+(translate[0]) + 110) + " " + +(translate[1]) + ")");
 
             }
@@ -82,7 +82,7 @@ function web_functions() {
               d3.select("#" + thisData.id)
               .append("text")
               .attr("class", "click-here")
-              .text("Click Here")
+              .text("Click City for More")
               .attr("transform", "translate(" + +(translate[0]) + " " + (+(translate[1]) + 45) + ")");
 
             }
@@ -91,15 +91,23 @@ function web_functions() {
               d3.select("#" + thisData.id)
               .append("text")
               .attr("class", "click-here")
-              .text("Click Here")
+              .text("Click City for More")
               .attr("transform", "translate(" + (+(translate[0]) + 130) + " " + +(translate[1]) + ")");              
+            }
+
+            else if (thisData.id == "sanjose") {
+              d3.select("#" + thisData.id)
+              .append("text")
+              .attr("class", "click-here")
+              .text("Click City for More")
+              .attr("transform", "translate(" + (+(translate[0]) - 80) + " " + (+(translate[1]) + 20) + ")");              
             }
 
             else {
               d3.select("#" + thisData.id)
               .append("text")
               .attr("class", "click-here")
-              .text("Click Here")
+              .text("Click City for More")
               .attr("transform", "translate(" + +(translate[0]) + " " + (+(translate[1]) + 25) + ")");
             };
 
