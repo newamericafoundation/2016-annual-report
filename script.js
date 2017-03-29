@@ -182,11 +182,11 @@ function web_functions() {
 
           if (infoBox.classed("selected") === true) {
             d3.selectAll(".cls-16, .cls-20").style("text-shadow", "none");
+
             return;
           }
           else {
-            $("#info-box").scrollTop();
-
+            setTimeout( function() {$("#info-box").scrollTop(0)}, 0);
             currentData = d;
             var allRelatedLocations = all_related_locations(currentData);
             d3.select(".click-here").remove();
@@ -343,6 +343,7 @@ function web_functions() {
             remove_classes_and_stroke(currentData);
             remove_all_previous_city_classes(currentData);
             d3.select("#" + currentData.id).selectAll("path").remove();
+            setTimeout( function() {$("#info-box").scrollTop(0)}, 0);
 
             infoBoxandContainer.attr("class", null);
             infoBoxandContainer.style("display", "none").style("opacity", 0);
