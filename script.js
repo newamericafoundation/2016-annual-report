@@ -37,6 +37,14 @@ $(window).on("resize", function(){
 
 function web_functions() {
 
+    modal = d3.select("#modal");
+    if (modal.classed("active")) {
+      d3.selectAll("#na-map, #top-content, #bottom-content").style("opacity", 0.2);
+      d3.selectAll("#cities").style("pointer-events", "none");
+      d3.selectAll(".city:hover").style("cursor", "default");
+    }
+
+
     d3.json("https://na-data-projects.s3-us-west-2.amazonaws.com/data/project_index/annualreportmapdata.json", function(data) {
    
      var currentData = null;
@@ -73,7 +81,7 @@ function web_functions() {
               d3.select("#" + thisData.id)
               .append("text")
               .attr("class", "click-here")
-              .text("Click City for More")
+              .text("Click for More")
               .attr("transform", "translate(" + (+(translate[0]) + 110) + " " + +(translate[1]) + ")");
 
             }
@@ -82,7 +90,7 @@ function web_functions() {
               d3.select("#" + thisData.id)
               .append("text")
               .attr("class", "click-here")
-              .text("Click City for More")
+              .text("Click for More")
               .attr("transform", "translate(" + +(translate[0]) + " " + (+(translate[1]) + 45) + ")");
 
             }
@@ -91,7 +99,7 @@ function web_functions() {
               d3.select("#" + thisData.id)
               .append("text")
               .attr("class", "click-here")
-              .text("Click City for More")
+              .text("Click for More")
               .attr("transform", "translate(" + (+(translate[0]) + 130) + " " + +(translate[1]) + ")");              
             }
 
@@ -99,7 +107,7 @@ function web_functions() {
               d3.select("#" + thisData.id)
               .append("text")
               .attr("class", "click-here")
-              .text("Click City for More")
+              .text("Click for More")
               .attr("transform", "translate(" + (+(translate[0]) - 80) + " " + (+(translate[1]) + 20) + ")");              
             }
 
@@ -107,7 +115,7 @@ function web_functions() {
               d3.select("#" + thisData.id)
               .append("text")
               .attr("class", "click-here")
-              .text("Click City for More")
+              .text("Click for More")
               .attr("transform", "translate(" + +(translate[0]) + " " + (+(translate[1]) + 25) + ")");
             };
 
@@ -333,28 +341,59 @@ function web_functions() {
               infoBoxandContainer.style("display", "none").style("opacity", 0);
           });
 
+          d3.select("#modal-exit")
+            .on("click", function(){
+              d3.selectAll("#na-map, #top-content, #bottom-content").style("opacity", 1);
+              d3.selectAll("#cities").style("pointer-events", "unset");
+              d3.select("#modal").attr("class", null);
+              d3.select("#modal").style("display","none");
+              d3.selectAll(".city:hover").style("cursor", "pointer");
+            });
+
       d3.select("body")
         .on("click", function(event){
 
-          if (screenType === "web") {
+          if (screenType === "web") {         
 
-            if (d3.event.target.id == "info-box" || d3.event.target.className["baseVal"] == "cls-18 main " + currentData.id || d3.event.target.className["baseVal"] == "cls-17 main"
-                || d3.event.target.className["baseVal"] == "cls-16 " + currentData.id || d3.event.target.className["baseVal"]  == "cls-20 " + currentData.id) {
-              return;
-            }
+            if (d3.select("#modal").classed("active")) {
+                if ($(d3.event.target).closest('#modal').length) {
+                  return;
+                }
+                else {
+                  d3.selectAll("#na-map, #top-content, #bottom-content").style("opacity", 1);
+                  d3.selectAll("#cities").style("pointer-events", "unset");
+                  d3.select("#modal").attr("class", null);
+                  d3.select("#modal").style("display","none");
+                  return;
+                }
+              }
 
-            if($(d3.event.target).closest('#info-box').length)
-              return; 
+              else {
 
-            d3.selectAll("#map, #waves, .flag, .city, .cls-18, #clouds").attr("opacity", 1);
-            d3.selectAll(".cls-16").style("fill", "#808285");
-            remove_classes_and_stroke(currentData);
-            remove_all_previous_city_classes(currentData);
-            d3.select("#" + currentData.id).selectAll("path").remove();
-            setTimeout( function() {$("#info-box").scrollTop(0)}, 0);
+                    if (d3.event.target.id == "info-box" || d3.event.target.id == "modal" 
+                      || d3.event.target.className["baseVal"] == "cls-18 main " + currentData.id 
+                      || d3.event.target.className["baseVal"] == "cls-17 main"
+                      || d3.event.target.className["baseVal"] == "cls-16 " + currentData.id 
+                      || d3.event.target.className["baseVal"]  == "cls-20 " + currentData.id) {
+                      
+                      return;
+                    }
 
-            infoBoxandContainer.attr("class", null);
-            infoBoxandContainer.style("display", "none").style("opacity", 0);
+                    if (($(d3.event.target).closest('#info-box').length) || ($(d3.event.target).closest('#modal').length)) {
+                      return; 
+                    }
+
+
+                    d3.selectAll("#map, #waves, .flag, .city, .cls-18, #clouds").attr("opacity", 1);
+                    d3.selectAll(".cls-16").style("fill", "#808285");
+                    remove_classes_and_stroke(currentData);
+                    remove_all_previous_city_classes(currentData);
+                    d3.select("#" + currentData.id).selectAll("path").remove();
+                    setTimeout( function() {$("#info-box").scrollTop(0)}, 0);
+
+                    infoBoxandContainer.attr("class", null);
+                    infoBoxandContainer.style("display", "none").style("opacity", 0);
+                  }
           }
 
           else {

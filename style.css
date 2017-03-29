@@ -32,14 +32,51 @@ h2 {
 
 h1 {
     font-size: 200%;
-    margin-top: -.1em;
+    margin-top: .2em;
     margin-left: -.03em;
+    margin-bottom: .2em;
 }
 
 /* Styling for SVG elements */
 
 .cls-20, .cls-16 {
 	font-family: 'Circular-Book' !important;
+}
+
+/* Modal styling */
+
+#modal {
+	z-index: 10;
+	width: 33.3%;
+	height: auto;
+	padding: 25px;
+	border-radius: 10px;
+	color: #808080;
+	text-align: left;
+	background-color: white;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+#modal h1 {
+	color: black;
+}
+
+#modal-exit {
+	color: #53C4CA;
+	float: right;
+	font-size: 80%;
+	padding-top: 1%;
+}
+
+#modal-exit:hover {
+	cursor: pointer;
 }
 
 /* Styling for Top and Bottom Content Divs */
@@ -89,10 +126,11 @@ h1 {
 }
 
 #top-content p {
-	font-size: 81.3%;
+	font-size: 87.5%;
 	line-height: 130%;
 	width: 95%;
-	margin-top: -20px;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 #bottom-content {
@@ -193,7 +231,6 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
     color: #000;
     border-bottom: 2px solid rgba(128, 128, 128, 0.15);
     padding-bottom: 10px;
-    padding-top: 15px;
 }
 
 .info-title {
@@ -213,7 +250,7 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 #exit {
 	color: #53C4CA;
 	float: right;
-	margin-top: -0.47em;
+	margin-top: -1%;
 }
 
 #exit:hover {
@@ -339,7 +376,7 @@ a:visited #donation-button, a:hover #donation-button, a:active #donation-button,
 		font-family: 'Circular-Book';
 	}
 
-	svg, #info-box, #info-box-container, #bottom-content {
+	svg, #modal, #info-box, #info-box-container, #bottom-content {
 		display: none;
 	}
 
