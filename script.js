@@ -77,12 +77,30 @@ function web_functions() {
             translate = translate.split(" ");
             // console.log(translate);
 
-            if (thisData.id == "baltimore") {
+            if ((thisData.id == "baltimore") || (thisData.id == "berkscounty")) {
               d3.select("#" + thisData.id)
               .append("text")
               .attr("class", "click-here")
               .text("Click for More")
-              .attr("transform", "translate(" + (+(translate[0]) + 110) + " " + +(translate[1]) + ")");
+              .attr("transform", "translate(" + +(translate[0]) + " " + (+(translate[1]) + 45) + ")");
+
+            }
+
+            else if (thisData.id == "arlington") {
+              d3.select("#" + thisData.id)
+              .append("text")
+              .attr("class", "click-here")
+              .text("Click for More")
+              .attr("transform", "translate(" + (+(translate[0]) - 30) + " " + (+(translate[1]) + 38) + ")");
+
+            }
+
+            else if (thisData.id == "dover") {
+              d3.select("#" + thisData.id)
+              .append("text")
+              .attr("class", "click-here")
+              .text("Click for More")
+              .attr("transform", "translate(" + +(translate[0]) + " " + (+(translate[1]) + 20) + ")");
 
             }
 
@@ -383,18 +401,17 @@ function web_functions() {
                       return; 
                     }
 
+                      d3.selectAll("#map, #waves, .flag, .city, .cls-18, #clouds").attr("opacity", 1);
+                      d3.selectAll(".cls-16").style("fill", "#808285");
+                      remove_classes_and_stroke(currentData);
+                      remove_all_previous_city_classes(currentData);
+                      d3.select("#" + currentData.id).selectAll("path").remove();
+                      setTimeout( function() {$("#info-box").scrollTop(0)}, 0);
 
-                    d3.selectAll("#map, #waves, .flag, .city, .cls-18, #clouds").attr("opacity", 1);
-                    d3.selectAll(".cls-16").style("fill", "#808285");
-                    remove_classes_and_stroke(currentData);
-                    remove_all_previous_city_classes(currentData);
-                    d3.select("#" + currentData.id).selectAll("path").remove();
-                    setTimeout( function() {$("#info-box").scrollTop(0)}, 0);
-
-                    infoBoxandContainer.attr("class", null);
-                    infoBoxandContainer.style("display", "none").style("opacity", 0);
+                      infoBoxandContainer.attr("class", null);
+                      infoBoxandContainer.style("display", "none").style("opacity", 0);
+                    }
                   }
-          }
 
           else {
             return;
