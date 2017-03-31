@@ -3,7 +3,7 @@
     var height = $(window).height();
     var screenType = null;
 
-    if (width <= 1024 || height <= 600) {
+    if (width <= 800 || height <= 550) {
       screenType = "mobile";
     }
     else {
